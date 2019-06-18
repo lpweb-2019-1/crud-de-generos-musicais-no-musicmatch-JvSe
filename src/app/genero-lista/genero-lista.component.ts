@@ -1,23 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ArtistasService } from '../artistas.service';
+import { GenerosService } from '../generos.service';
 import { Router } from '@angular/router';
 
-/**
- * O componente `ArtistaListaComponent` implementa funcionalidades de
- * gerenciamento de artistas:
- * 
- * * lista (consulta)
- * * exclusão (após confirmação do usuário)
- * * acesso à funcionalidade de edição (componente [`EditarArtistaComponent`]{@link EditarArtistaComponent})
- */
 @Component({
-  selector: 'app-artista-lista',
-  templateUrl: './artista-lista.component.html',
-  styleUrls: ['./artista-lista.component.css']
+  selector: 'app-genero-lista',
+  templateUrl: './genero-lista.component.html',
+  styleUrls: ['./genero-lista.component.css']
 })
-export class ArtistaListaComponent implements OnInit {
+export class GeneroListaComponent implements OnInit {
   /** A lista de artistas */
-  artistas = null;
+  generos = null;
 
   /** Uma variável de controle sobre o resultado da exclusão de artista */
   resultadoExcluir = null;
@@ -28,8 +20,8 @@ export class ArtistaListaComponent implements OnInit {
    * @param artistas$ Uma instância de `ArtistasService`
    * @param router Uma instância de `Router`
    */
-  constructor(private artistas$: ArtistasService, private router: Router) { }
-  
+  constructor(private generos$: GenerosService, private router: Router) { }
+
   /**
    * É sobrecarregado para acessar a lista de artistas quando o componente for iniciado.
    */
@@ -42,9 +34,9 @@ export class ArtistaListaComponent implements OnInit {
    * Quando houver retorno, armazena o resultado no atributo `artistas`.
    */
   atualizarLista() {
-    this.artistas$.lista()
+    this.generos$.lista()
       .subscribe(
-        lista => this.artistas = lista.results
+        lista => this.generos = lista.results
       );
   }
 
@@ -55,7 +47,7 @@ export class ArtistaListaComponent implements OnInit {
    */
   excluir(artista) {
     if (confirm(`Tem certeza que deseja excluir o artista "${artista.nome}" ?\nEssa ação não é reversível!`)) {
-      this.artistas$.excluir(artista.id)
+      this.generos$.excluir(artista.id)
         .subscribe(
           _ => {
             this.resultadoExcluir = true;
@@ -74,15 +66,15 @@ export class ArtistaListaComponent implements OnInit {
    * @param artista O artista que será editado
    */
   editar(artista) {
-    this.router.navigate(['artistas', artista.id, 'editar']);
+    this.router.navigate(['generos', artista.id, 'editar']);
   }
-
+  
   /**
    * Este método realiza navegação para a funcionalide de consulta do artista.
    * 
    * @param artista O artista que será consultado
    */
   consultar(artista) {
-    this.router.navigate(['artistas', artista.id]);
+    this.router.navigate(['generos', artista.id]);
   }
 }

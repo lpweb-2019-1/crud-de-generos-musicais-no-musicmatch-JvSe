@@ -15,6 +15,9 @@ import { ListaDeMusicasComponent } from './lista-de-musicas/lista-de-musicas.com
 import { CadastrarArtistaComponent } from './cadastrar-artista/cadastrar-artista.component';
 import { ArtistaListaComponent } from './artista-lista/artista-lista.component';
 import { EditarArtistaComponent } from './editar-artista/editar-artista.component';
+import { GeneroListaComponent } from './genero-lista/genero-lista.component';
+import { GeneroCadastrarComponent } from './genero-cadastrar/genero-cadastrar.component';
+import { GeneroEditarComponent } from './genero-editar/genero-editar.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { EditarArtistaComponent } from './editar-artista/editar-artista.componen
     ListaDeMusicasComponent,
     CadastrarArtistaComponent,
     ArtistaListaComponent,
-    EditarArtistaComponent
+    EditarArtistaComponent,
+    GeneroListaComponent,
+    GeneroCadastrarComponent,
+    GeneroEditarComponent
   ],
   imports: [
     BrowserModule,
